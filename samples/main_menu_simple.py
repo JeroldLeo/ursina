@@ -1,5 +1,6 @@
 from ursina import *
 
+
 # Main Menu Example, or it can be any kind of menu, like Inventory, Quest journal, etc.
 # Created by Doctor
 # 09 Feb 21
@@ -19,7 +20,7 @@ class MenuMenu(Entity):
 
         # [MAIN MENU] WINDOW START
         # Titile of our menu
-        Text("MAIN MENU", parent=self.main_menu, y=0.4, x=0, origin=(0,0))
+        Text("MAIN MENU", parent=self.main_menu, y=0.4, x=0, origin=(0, 0))
 
         # Reference of our action function for quit button
         def quit_game():
@@ -37,16 +38,16 @@ class MenuMenu(Entity):
 
         # Button list
         ButtonList(button_dict={
-            "Start": Func(print_on_screen,"You clicked on Start button!", position=(0,.1), origin=(0,0)),
+            "Start": Func(print_on_screen, "You clicked on Start button!", position=(0, .1), origin=(0, 0)),
             "Options": Func(options_menu_btn),
             "Help": Func(help_menu_btn),
             "Exit": Func(quit_game)
-        },y=0,parent=self.main_menu)
+        }, y=0, parent=self.main_menu)
         # [MAIN MENU] WINDOW END
 
         # [OPTIONS MENU] WINDOW START
         # Titile of our menu
-        Text ("OPTIONS MENU", parent=self.options_menu, y=0.4, x=0, origin=(0, 0))
+        Text("OPTIONS MENU", parent=self.options_menu, y=0.4, x=0, origin=(0, 0))
 
         # Reference of our action function for back button
         def options_back_btn_action():
@@ -54,14 +55,14 @@ class MenuMenu(Entity):
             self.options_menu.disable()
 
         # Button
-        Button("Back",parent=self.options_menu,y=-0.3,scale=(0.1,0.05),color=rgb(50,50,50),
+        Button("Back", parent=self.options_menu, y=-0.3, scale=(0.1, 0.05), color=rgb(50, 50, 50),
                on_click=options_back_btn_action)
 
         # [OPTIONS MENU] WINDOW END
 
         # [HELP MENU] WINDOW START
         # Titile of our menu
-        Text ("HELP MENU", parent=self.help_menu, y=0.4, x=0, origin=(0, 0))
+        Text("HELP MENU", parent=self.help_menu, y=0.4, x=0, origin=(0, 0))
 
         # Reference of our action function for back button
         def help_back_btn_action():
@@ -69,17 +70,17 @@ class MenuMenu(Entity):
             self.help_menu.disable()
 
         # Button list
-        ButtonList (button_dict={
-            "Gameplay": Func(print_on_screen,"You clicked on Gameplay help button!", position=(0,.1), origin=(0,0)),
-            "Battle": Func(print_on_screen,"You clicked on Battle help button!", position=(0,.1), origin=(0,0)),
-            "Control": Func(print_on_screen,"You clicked on Control help button!", position=(0,.1), origin=(0,0)),
-            "Back": Func (help_back_btn_action)
+        ButtonList(button_dict={
+            "Gameplay": Func(print_on_screen, "You clicked on Gameplay help button!", position=(0, .1), origin=(0, 0)),
+            "Battle": Func(print_on_screen, "You clicked on Battle help button!", position=(0, .1), origin=(0, 0)),
+            "Control": Func(print_on_screen, "You clicked on Control help button!", position=(0, .1), origin=(0, 0)),
+            "Back": Func(help_back_btn_action)
         }, y=0, parent=self.help_menu)
         # [HELP MENU] WINDOW END
 
         # Here we can change attributes of this class when call this class
-        for key, value in kwargs.items ():
-            setattr (self, key, value)
+        for key, value in kwargs.items():
+            setattr(self, key, value)
 
     # Input function that check if key pressed on keyboard
     def input(self, key):

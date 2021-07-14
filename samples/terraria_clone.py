@@ -1,14 +1,15 @@
 from ursina import *
-from math import floor
-
 
 app = Ursina()
 
 size = 32
-plane = Entity(model='quad', color=color.azure, origin=(-.5,-.5), z=10, collider='box', scale=size) # create an invisible plane for the mouse to collide with
-grid = [[Entity(model='quad', position=(x,y), texture='white_cube', enabled=False) for y in range(size)] for x in range(size)] # make 2d array of entities
-player = Entity(model='quad', color=color.orange, position=(16,16,-.1))
+plane = Entity(model='quad', color=color.azure, origin=(-.5, -.5), z=10, collider='box',
+               scale=size)  # create an invisible plane for the mouse to collide with
+grid = [[Entity(model='quad', position=(x, y), texture='white_cube', enabled=False) for y in range(size)] for x in
+        range(size)]  # make 2d array of entities
+player = Entity(model='quad', color=color.orange, position=(16, 16, -.1))
 cursor = Entity(model=Quad(mode='line'), color=color.lime)
+
 
 def update():
     if mouse.hovered_entity == plane:
@@ -20,9 +21,8 @@ def update():
     # check the grid if the player can move there
     if held_keys['a'] and not grid[int(player.x)][int(player.y)].enabled:
         player.x -= 5 * time.dt
-    if held_keys['d'] and not grid[int(player.x)+1][int(player.y)].enabled:
+    if held_keys['d'] and not grid[int(player.x) + 1][int(player.y)].enabled:
         player.x += 5 * time.dt
-
 
 
 def input(key):
@@ -34,7 +34,7 @@ def input(key):
 
 camera.orthographic = True
 camera.fov = 10
-camera.position = (16,18)
+camera.position = (16, 18)
 
 # enable all tiles lower than 16 to make a ground
 for column in grid:
